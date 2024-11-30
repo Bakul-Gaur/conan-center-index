@@ -1,0 +1,6 @@
+sources:
+  # Newer versions at the top
+  "2024.09.1":
+    url:
+      - "https://github.com/rdkit/rdkit/archive/refs/tags/Release_2024_09_1.tar.gz"
+    sha256: "034c00d6e9de323506834da03400761ed8c3721095114369d06805409747a60f"
