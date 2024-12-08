@@ -8,6 +8,7 @@ class TestPackageRDKit(ConanFile):
     settings = "os", "arch", "compiler", "build_type"
     generators = "CMakeDeps", "CMakeToolchain", "VirtualRunEnv"
     test_type = "explicit"
+    build_requires = "cmake/[>=3.16]"
 
     def requirements(self):
         self.requires(self.tested_reference_str)

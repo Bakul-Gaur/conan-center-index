@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24)
+cmake_minimum_required(VERSION 3.16)
 
 project(test_rdkit LANGUAGES CXX)
 
@@ -7,7 +7,7 @@ find_package(rdkit REQUIRED CONFIG)
 add_executable(${PROJECT_NAME} test_rdkit.cpp)
 
 target_link_libraries(${PROJECT_NAME}
-                      PRIVATE rdkit::rdkit_shared
+                      PRIVATE rdkit::rdkit_shared Freetype::Freetype
 )
 
 # Boost include path fix (It's unclear why CMake doesn't set Boost include dir automatically in the build command when
