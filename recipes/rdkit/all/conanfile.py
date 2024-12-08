@@ -28,12 +28,13 @@ class PackageRDKit(ConanFile):
         "shared": False,
         "fPIC": True,
     }
+    build_requires = "cmake/[>=3.16]"
 
     rdkit_projects = [
-        "Abbreviations",
-        "Alignment",
-        "CIPLabeler",
-        "Catalogs",
+        # "Abbreviations",
+        # "Alignment",
+        # "CIPLabeler",
+        # "Catalogs",
         "ChemReactions",
         "ChemTransforms",
         "ChemicalFeatures",
@@ -122,6 +123,8 @@ class PackageRDKit(ConanFile):
 
     def requirements(self):
         self.requires("boost/[>=1.70]")
+        self.requires("catch2/[>=3.7]")
+        self.requires("freetype/[>=2.13]")
 
     def validate(self):
         if self.settings.compiler.cppstd:
@@ -144,6 +147,7 @@ class PackageRDKit(ConanFile):
         tc.variables["RDK_BUILD_CPP_TESTS"] = False
         tc.variables["BOOST_ROOT"] = self.dependencies["boost"].package_folder
         tc.variables["Boost_NO_SYSTEM_PATHS"] = True
+        tc.variables["FREETYPE_INCLUDE_DIRS"] = os.path.join(self.dependencies["freetype"].package_folder, "include", "freetype2")
         tc.generate()
 
         tc = CMakeDeps(self)
