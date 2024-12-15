@@ -77,7 +77,7 @@ class PackageRDKit(ConanFile):
         "RascalMCES",
         "ReducedGraphs",
         "RingDecomposerLib",
-        "SLNParse",
+        # "SLNParse",
         "ScaffoldNetwork",
         "ShapeHelpers",
         "SimDivPickers",
@@ -117,6 +117,8 @@ class PackageRDKit(ConanFile):
     def configure(self):
         if self.options.shared:
             self.options.rm_safe("fPIC")
+        if self.settings.compiler == "clang" and self.settings.compiler.version == "13":
+            self.settings.compiler.cppstd = "gnu17"
 
     def layout(self):
         cmake_layout(self, src_folder="src")
